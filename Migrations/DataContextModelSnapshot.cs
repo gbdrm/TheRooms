@@ -57,12 +57,12 @@ namespace TheRooms.Migrations
             modelBuilder.Entity("TheRooms.Models.Door", b =>
                 {
                     b.HasOne("TheRooms.Models.Room", "RoomFrom")
-                        .WithMany()
+                        .WithMany("DoorsOut")
                         .HasForeignKey("RoomFromId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("TheRooms.Models.Room", "RoomTo")
-                        .WithMany()
+                        .WithMany("DoorsIn")
                         .HasForeignKey("RoomToId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
