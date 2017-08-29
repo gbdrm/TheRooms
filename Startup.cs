@@ -40,6 +40,11 @@ namespace TheRooms
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "rooms",
+                    template: "Rooms/{id}",
+                    defaults: new { controller = "Rooms", action = "Show" });
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
