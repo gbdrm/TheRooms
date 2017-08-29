@@ -20,7 +20,7 @@
 
 <form method="POST">
     <div class="container text-center" style="max-width: 600px">
-        
+
         <br /><br />
         <div class="well well-lg">
             @foreach (var door in Model.InDoors)
@@ -33,18 +33,15 @@
                     Комната №@Model.Id. @Model.Name
                 </h4>
             </div>
-            <div class="row">
-                <h3 style="color:darkblue">
-                    @Model.Task
-                </h3>
-            </div>
-            <br /><br />
-            @if (Model.IsCompleted)
+            @if (!Model.IsCompleted)
             {
-                <span class="glyphicon glyphicon-ok"></span>
-            }
-            else
-            {
+                <div class="row">
+                    <h3 style="color:darkblue">
+                        @Model.Task
+                    </h3>
+                </div>
+                <br /><br />
+
                 <div class="row">
                     <div class="input-group">
                         <input type="text" name="answer" autofocus="" class="form-control">

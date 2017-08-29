@@ -68,7 +68,7 @@ namespace TheRooms.Controllers
         private bool AnswerIsCorrect(int id, string answer)
         {
             var room = _context.Rooms.Find(id);
-            return room.Answer == "*" || room.Answer == answer;
+            return room.Answer == "*" || room.Answer.ToLower() == answer;
         }
 
         private bool HasAcess(string token, int roomId)
