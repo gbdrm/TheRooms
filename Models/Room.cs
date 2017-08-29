@@ -15,5 +15,7 @@ namespace TheRooms.Models
 
         [InverseProperty("RoomFrom")]
         public ICollection<Door> DoorsOut { get; set; }
+
+        public ICollection<CompletedRoom> CompletedRooms { get; set; }
     }
 }
