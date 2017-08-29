@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Folder Include="Views\Home\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
