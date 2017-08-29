@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TheRooms.Data;
+using TheRooms.ViewModels;
 
 namespace TheRooms.Controllers
 {
@@ -15,8 +16,12 @@ namespace TheRooms.Controllers
 
         public async Task<IActionResult> Show(int id)
         {
-            var room = await _context.Rooms.SingleAsync(r => r.Id == id);
-            return View(room);
+            var room = await _context.Rooms
+                .Include(r => r.DoorsIn)
+                .Include(r => r.DoorsOut)
+                .SingleAsync(r => r.Id == id);
+            var model = new RoomViewModel(room);
+            return View(model);
         }
     }
 }
