@@ -41,7 +41,7 @@ namespace TheRooms
             {
                 routes.MapRoute(
                     name: "rooms",
-                    template: "Rooms/{id}",
+                    template: "Rooms/{id:int}",
                     defaults: new { controller = "Rooms", action = "Show" });
 
                 routes.MapRoute(
