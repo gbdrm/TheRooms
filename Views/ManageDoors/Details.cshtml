@@ -1,0 +1,30 @@
+﻿@model TheRooms.Models.Door
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Door</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomFrom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RoomFrom.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomTo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RoomTo.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
