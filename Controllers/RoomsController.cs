@@ -22,7 +22,7 @@ namespace TheRooms.Controllers
         public async Task<IActionResult> Show(int id)
         {
             var token = Request.Cookies["token"];
-            if (id != 1 && token == null)
+            if (id != 1 && token == null || !HasAcess(token, id))
             {
                 return BadRequest();
             }
@@ -79,11 +79,15 @@ namespace TheRooms.Controllers
                 .Include(p => p.CompletedRooms)
                 .SingleOrDefault(p => p.Id == token);
 
-            var doorExists = _context.Doors
+            var doorToExists = _context.Doors
                 .Any(d => d.RoomToId == roomId
                 && player.CompletedRooms.Any(c => c.RoomId == d.RoomFromId));
 
-            return doorExists;
+            var doorFromExists = _context.Doors
+                .Any(d => d.RoomFromId == roomId
+                && player.CompletedRooms.Any(c => c.RoomId == d.RoomToId));
+
+            return doorToExists || doorFromExists;
         }
 
         private string GetToken(int id, string answer)
